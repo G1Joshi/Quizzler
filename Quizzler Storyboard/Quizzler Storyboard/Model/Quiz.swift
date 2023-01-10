@@ -9,27 +9,30 @@ import Foundation
 
 struct Quiz {
     let question: String
+    let options: [String]
     let answer: String
 
     static var questionNumber = 0, score = 0
 
     static let quiz = [
-        Quiz(question: "A slug's blood is green.", answer: "True"),
-        Quiz(question: "Approximately one quarter of human bones are in the feet.", answer: "True"),
-        Quiz(question: "The total surface area of two human lungs is approximately 70 square metres.", answer: "True"),
-        Quiz(question: "In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.", answer: "True"),
-        Quiz(question: "In London, UK, if you happen to die in the House of Parliament, you are technically entitled to a state funeral, because the building is considered too sacred a place.", answer: "False"),
-        Quiz(question: "It is illegal to pee in the Ocean in Portugal.", answer: "True"),
-        Quiz(question: "You can lead a cow down stairs but not up stairs.", answer: "False"),
-        Quiz(question: "Google was originally called 'Backrub'.", answer: "True"),
-        Quiz(question: "Buzz Aldrin's mother's maiden name was 'Moon'.", answer: "True"),
-        Quiz(question: "The loudest sound produced by any animal is 188 decibels. That animal is the African Elephant.", answer: "False"),
-        Quiz(question: "No piece of square dry paper can be folded in half more than 7 times.", answer: "False"),
-        Quiz(question: "Chocolate affects a dog's heart and nervous system; a few ounces are enough to kill a small dog.", answer: "True"),
+        Quiz(question: "Which is the largest organ in the human body?", options: ["Heart", "Skin", "Large Intestine"], answer: "Skin"),
+        Quiz(question: "Five dollars is worth how many nickels?", options: ["25", "50", "100"], answer: "100"),
+        Quiz(question: "What do the letters in the GMT time zone stand for?", options: ["Global Meridian Time", "Greenwich Mean Time", "General Median Time"], answer: "Greenwich Mean Time"),
+        Quiz(question: "What is the French word for 'hat'?", options: ["Chapeau", "Écharpe", "Bonnet"], answer: "Chapeau"),
+        Quiz(question: "In past times, what would a gentleman keep in his fob pocket?", options: ["Notebook", "Handkerchief", "Watch"], answer: "Watch"),
+        Quiz(question: "How would one say goodbye in Spanish?", options: ["Au Revoir", "Adiós", "Salir"], answer: "Adiós"),
+        Quiz(question: "Which of these colours is NOT featured in the logo for Google?", options: ["Green", "Orange", "Blue"], answer: "Orange"),
+        Quiz(question: "What alcoholic drink is made from molasses?", options: ["Rum", "Whisky", "Gin"], answer: "Rum"),
+        Quiz(question: "What type of animal was Harambe?", options: ["Panda", "Gorilla", "Crocodile"], answer: "Gorilla"),
+        Quiz(question: "Where is Tasmania located?", options: ["Indonesia", "Australia", "Scotland"], answer: "Australia"),
     ]
 
     static func getQuestion() -> String {
         return quiz[questionNumber].question
+    }
+
+    static func getOptions() -> [String] {
+        return quiz[questionNumber].options
     }
 
     static func getProgress() -> Float {

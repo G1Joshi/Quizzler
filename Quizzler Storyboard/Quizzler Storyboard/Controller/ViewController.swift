@@ -11,8 +11,9 @@ class ViewController: UIViewController {
     @IBOutlet var progressView: UIProgressView!
     @IBOutlet var scoreLabel: UILabel!
     @IBOutlet var questionLabel: UILabel!
-    @IBOutlet var falseButton: UIButton!
-    @IBOutlet var trueButton: UIButton!
+    @IBOutlet var AButton: UIButton!
+    @IBOutlet var BButton: UIButton!
+    @IBOutlet var CButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +31,13 @@ class ViewController: UIViewController {
     }
 
     @objc func updateUi() {
-        trueButton.backgroundColor = .clear
-        falseButton.backgroundColor = .clear
+        let options = Quiz.getOptions()
+        AButton.backgroundColor = .clear
+        BButton.backgroundColor = .clear
+        CButton.backgroundColor = .clear
+        AButton.setTitle(options[0], for: .normal)
+        BButton.setTitle(options[1], for: .normal)
+        CButton.setTitle(options[2], for: .normal)
         questionLabel.text = Quiz.getQuestion()
         progressView.progress = Quiz.getProgress()
         scoreLabel.text = "Score: \(Quiz.getScore())"

@@ -13,8 +13,9 @@ class ViewController: UIViewController {
     let progressView = UIProgressView()
     let scoreLabel = UILabel()
     let questionLabel = UILabel()
-    let trueButton = UIButton()
-    let falseButton = UIButton()
+    let AButton = UIButton()
+    let BButton = UIButton()
+    let CButton = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +38,9 @@ class ViewController: UIViewController {
         stackView.addArrangedSubview(progressView)
         stackView.addArrangedSubview(scoreLabel)
         stackView.addArrangedSubview(questionLabel)
-        stackView.addArrangedSubview(trueButton)
-        stackView.addArrangedSubview(falseButton)
+        stackView.addArrangedSubview(AButton)
+        stackView.addArrangedSubview(BButton)
+        stackView.addArrangedSubview(CButton)
 
         progressView.progressViewStyle = .bar
         progressView.progress = 0.5
@@ -55,19 +57,26 @@ class ViewController: UIViewController {
         questionLabel.textAlignment = .center
         questionLabel.numberOfLines = 0
 
-        trueButton.setTitle("True", for: .normal)
-        trueButton.setTitleColor(.white, for: .normal)
-        trueButton.setBackgroundImage(UIImage(named: "Rectangle"), for: .normal)
-        trueButton.titleLabel?.font = .systemFont(ofSize: 25)
-        trueButton.layer.cornerRadius = 25
-        trueButton.addAction(answerSelected(trueButton), for: .touchUpInside)
+        AButton.setTitle("A", for: .normal)
+        AButton.setTitleColor(.white, for: .normal)
+        AButton.setBackgroundImage(UIImage(named: "Rectangle"), for: .normal)
+        AButton.titleLabel?.font = .systemFont(ofSize: 25)
+        AButton.layer.cornerRadius = 25
+        AButton.addAction(answerSelected(AButton), for: .touchUpInside)
 
-        falseButton.setTitle("False", for: .normal)
-        falseButton.setTitleColor(.white, for: .normal)
-        falseButton.setBackgroundImage(UIImage(named: "Rectangle"), for: .normal)
-        falseButton.titleLabel?.font = .systemFont(ofSize: 25)
-        falseButton.layer.cornerRadius = 25
-        falseButton.addAction(answerSelected(falseButton), for: .touchUpInside)
+        BButton.setTitle("B", for: .normal)
+        BButton.setTitleColor(.white, for: .normal)
+        BButton.setBackgroundImage(UIImage(named: "Rectangle"), for: .normal)
+        BButton.titleLabel?.font = .systemFont(ofSize: 25)
+        BButton.layer.cornerRadius = 25
+        BButton.addAction(answerSelected(BButton), for: .touchUpInside)
+
+        CButton.setTitle("C", for: .normal)
+        CButton.setTitleColor(.white, for: .normal)
+        CButton.setBackgroundImage(UIImage(named: "Rectangle"), for: .normal)
+        CButton.titleLabel?.font = .systemFont(ofSize: 25)
+        CButton.layer.cornerRadius = 25
+        CButton.addAction(answerSelected(CButton), for: .touchUpInside)
     }
 
     func setupConstraint() {
@@ -88,9 +97,9 @@ class ViewController: UIViewController {
 
             scoreLabel.heightAnchor.constraint(equalToConstant: 20),
 
-            trueButton.heightAnchor.constraint(equalToConstant: 100),
-
-            falseButton.heightAnchor.constraint(equalToConstant: 100),
+            AButton.heightAnchor.constraint(equalToConstant: 100),
+            BButton.heightAnchor.constraint(equalToConstant: 100),
+            CButton.heightAnchor.constraint(equalToConstant: 100),
         ])
     }
 
@@ -107,8 +116,13 @@ class ViewController: UIViewController {
     }
 
     @objc func updateUi() {
-        trueButton.backgroundColor = .clear
-        falseButton.backgroundColor = .clear
+        let options = Quiz.getOptions()
+        AButton.backgroundColor = .clear
+        BButton.backgroundColor = .clear
+        CButton.backgroundColor = .clear
+        AButton.setTitle(options[0], for: .normal)
+        BButton.setTitle(options[1], for: .normal)
+        CButton.setTitle(options[2], for: .normal)
         questionLabel.text = Quiz.getQuestion()
         progressView.progress = Quiz.getProgress()
         scoreLabel.text = "Score: \(Quiz.getScore())"
