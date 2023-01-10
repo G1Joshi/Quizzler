@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         view.backgroundColor = UIColor(named: "Primary")
         setupUi()
         setupConstraint()
+        updateUi()
     }
 
     func setupUi() {
@@ -46,16 +47,19 @@ class ViewController: UIViewController {
         questionLabel.textColor = .white
         questionLabel.font = .boldSystemFont(ofSize: 30)
         questionLabel.textAlignment = .center
+        questionLabel.numberOfLines = 0
 
         trueButton.setTitle("True", for: .normal)
         trueButton.setTitleColor(.white, for: .normal)
         trueButton.setBackgroundImage(UIImage(named: "Rectangle"), for: .normal)
         trueButton.titleLabel?.font = .systemFont(ofSize: 25)
+        trueButton.addAction(answerSelected(trueButton), for: .touchUpInside)
 
         falseButton.setTitle("False", for: .normal)
         falseButton.setTitleColor(.white, for: .normal)
         falseButton.setBackgroundImage(UIImage(named: "Rectangle"), for: .normal)
         falseButton.titleLabel?.font = .systemFont(ofSize: 25)
+        falseButton.addAction(answerSelected(falseButton), for: .touchUpInside)
     }
 
     func setupConstraint() {
@@ -78,5 +82,24 @@ class ViewController: UIViewController {
 
             falseButton.heightAnchor.constraint(equalToConstant: 100),
         ])
+    }
+
+    func answerSelected(_ sender: UIButton) -> UIAction {
+        return UIAction { _ in
+            if Quiz.checkAnswer(sender.currentTitle) {
+                sender.backgroundColor = .green
+            } else {
+                sender.backgroundColor = .red
+            }
+            Quiz.nextQuestion()
+            Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(self.updateUi), userInfo: nil, repeats: false)
+        }
+    }
+
+    @objc func updateUi() {
+        trueButton.backgroundColor = .clear
+        falseButton.backgroundColor = .clear
+        questionLabel.text = Quiz.getQuestion()
+        progressView.progress = Quiz.getProgress()
     }
 }

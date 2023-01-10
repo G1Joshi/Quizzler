@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		934C700C296D450C006C22C3 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C700B296D450C006C22C3 /* Quiz.swift */; };
 		934E2FCE296C2E49004B98BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934E2FCD296C2E49004B98BD /* AppDelegate.swift */; };
 		934E2FD0296C2E49004B98BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934E2FCF296C2E49004B98BD /* SceneDelegate.swift */; };
 		934E2FD2296C2E49004B98BD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934E2FD1296C2E49004B98BD /* ViewController.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		934C700B296D450C006C22C3 /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 		934E2FCA296C2E49004B98BD /* Quizzler Programmatic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quizzler Programmatic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		934E2FCD296C2E49004B98BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		934E2FCF296C2E49004B98BD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +37,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		934C700D296D4547006C22C3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				934C700B296D450C006C22C3 /* Quiz.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		934C700E296D454C006C22C3 /* View-Controller */ = {
+			isa = PBXGroup;
+			children = (
+				934E2FD1296C2E49004B98BD /* ViewController.swift */,
+			);
+			path = "View-Controller";
+			sourceTree = "<group>";
+		};
 		934E2FC1296C2E49004B98BD = {
 			isa = PBXGroup;
 			children = (
@@ -56,7 +74,8 @@
 			children = (
 				934E2FCD296C2E49004B98BD /* AppDelegate.swift */,
 				934E2FCF296C2E49004B98BD /* SceneDelegate.swift */,
-				934E2FD1296C2E49004B98BD /* ViewController.swift */,
+				934C700D296D4547006C22C3 /* Model */,
+				934C700E296D454C006C22C3 /* View-Controller */,
 				934E2FD6296C2E4A004B98BD /* Assets.xcassets */,
 				934E2FD8296C2E4A004B98BD /* LaunchScreen.storyboard */,
 				934E2FDB296C2E4A004B98BD /* Info.plist */,
@@ -136,6 +155,7 @@
 			files = (
 				934E2FD2296C2E49004B98BD /* ViewController.swift in Sources */,
 				934E2FCE296C2E49004B98BD /* AppDelegate.swift in Sources */,
+				934C700C296D450C006C22C3 /* Quiz.swift in Sources */,
 				934E2FD0296C2E49004B98BD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
