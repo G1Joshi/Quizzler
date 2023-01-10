@@ -11,7 +11,7 @@ struct Quiz {
     let question: String
     let answer: String
 
-    static var questionNumber = 0
+    static var questionNumber = 0, score = 0
 
     static let quiz = [
         Quiz(question: "A slug's blood is green.", answer: "True"),
@@ -36,8 +36,13 @@ struct Quiz {
         return Float(questionNumber + 1) / Float(quiz.count)
     }
 
+    static func getScore() -> Int {
+        return score
+    }
+
     static func checkAnswer(_ selectedAnswer: String?) -> Bool {
         if selectedAnswer == quiz[questionNumber].answer {
+            score += 1
             return true
         } else {
             return false
@@ -49,6 +54,7 @@ struct Quiz {
             questionNumber += 1
         } else {
             questionNumber = 0
+            score = 0
         }
     }
 }

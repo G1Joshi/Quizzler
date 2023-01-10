@@ -11,6 +11,7 @@ class ViewController: UIViewController {
     let backgroundImage = UIImageView()
     let stackView = UIStackView()
     let progressView = UIProgressView()
+    let scoreLabel = UILabel()
     let questionLabel = UILabel()
     let trueButton = UIButton()
     let falseButton = UIButton()
@@ -34,6 +35,7 @@ class ViewController: UIViewController {
         stackView.distribution = .fillProportionally
         stackView.spacing = 10
         stackView.addArrangedSubview(progressView)
+        stackView.addArrangedSubview(scoreLabel)
         stackView.addArrangedSubview(questionLabel)
         stackView.addArrangedSubview(trueButton)
         stackView.addArrangedSubview(falseButton)
@@ -42,6 +44,10 @@ class ViewController: UIViewController {
         progressView.progress = 0.5
         progressView.progressTintColor = UIColor(named: "Secondary")
         progressView.trackTintColor = .white
+
+        scoreLabel.text = "Score: 0"
+        scoreLabel.textColor = .white
+        scoreLabel.textAlignment = .center
 
         questionLabel.text = "Question"
         questionLabel.textColor = .white
@@ -53,12 +59,14 @@ class ViewController: UIViewController {
         trueButton.setTitleColor(.white, for: .normal)
         trueButton.setBackgroundImage(UIImage(named: "Rectangle"), for: .normal)
         trueButton.titleLabel?.font = .systemFont(ofSize: 25)
+        trueButton.layer.cornerRadius = 25
         trueButton.addAction(answerSelected(trueButton), for: .touchUpInside)
 
         falseButton.setTitle("False", for: .normal)
         falseButton.setTitleColor(.white, for: .normal)
         falseButton.setBackgroundImage(UIImage(named: "Rectangle"), for: .normal)
         falseButton.titleLabel?.font = .systemFont(ofSize: 25)
+        falseButton.layer.cornerRadius = 25
         falseButton.addAction(answerSelected(falseButton), for: .touchUpInside)
     }
 
@@ -77,6 +85,8 @@ class ViewController: UIViewController {
             stackView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
 
             progressView.heightAnchor.constraint(equalToConstant: 10),
+
+            scoreLabel.heightAnchor.constraint(equalToConstant: 20),
 
             trueButton.heightAnchor.constraint(equalToConstant: 100),
 
@@ -101,5 +111,6 @@ class ViewController: UIViewController {
         falseButton.backgroundColor = .clear
         questionLabel.text = Quiz.getQuestion()
         progressView.progress = Quiz.getProgress()
+        scoreLabel.text = "Score: \(Quiz.getScore())"
     }
 }

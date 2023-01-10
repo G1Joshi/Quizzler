@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet var progressView: UIProgressView!
+    @IBOutlet var scoreLabel: UILabel!
     @IBOutlet var questionLabel: UILabel!
     @IBOutlet var falseButton: UIButton!
     @IBOutlet var trueButton: UIButton!
@@ -33,5 +34,6 @@ class ViewController: UIViewController {
         falseButton.backgroundColor = .clear
         questionLabel.text = Quiz.getQuestion()
         progressView.progress = Quiz.getProgress()
+        scoreLabel.text = "Score: \(Quiz.getScore())"
     }
 }
